@@ -34,13 +34,13 @@ updatefunction () ;
   sudo cmake ../ -DCMAKE_INSTALL_PREFIX=/azerothcore/azeroth-server/ -DCMAKE_C_COMPILER=/usr/bin/clang -DCMAKE_CXX_COMPILER=/usr/bin/clang++ -DWITH_WARNINGS=1 -DTOOLS_BUILD=all -DSCRIPTS=static -DMODULES=static
   sudo make -j 4
   sudo make install
+}
 
 while true; do
     read -p "Update servers? " yn
     case $yn in
-        [Yy]* ) make install; break;;
+        [Yy]* ) updatefunction ;;
         [Nn]* ) exit;;
         * ) echo "Please answer yes or no.";;
     esac
 done
-cmake ../ -DCMAKE_INSTALL_PREFIX=/azerothcore-fordragon/azeroth-server/ -DCMAKE_C_COMPILER=/usr/bin/clang -DCMAKE_CXX_COMPILER=/usr/bin/clang++ -DWITH_WARNINGS=1 -DTOOLS_BUILD=all -DSCRIPTS=static -DMODULES=static

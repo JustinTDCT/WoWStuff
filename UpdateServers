@@ -1,0 +1,24 @@
+#!/bin/bash
+echo "Checking azerothcore ..."
+cd ~/azerothcore-wotlk
+git pull origin master
+echo 
+echo "Checking playerbots ..."
+cd ~/azerothcore-wotlk/modules/mod-playerbots
+git pull origin master
+echo
+echo "Checking transmog ..."
+cd ~/azerothcore-wotlk/modules/mod-transmog
+git pull origin master
+echo
+echo "Checking eluna ..."
+cd ~/azerothcore-wotlk/modules/mod-eluna
+git pull origin master
+echo
+echo "Checking dugeonrespawn ..."
+cd ~/azerothcore-wotlk/modules/DungeonRespawn
+git pull origin master
+echo
+echo "Checking ah-bot ..."
+cd ~/azerothcore-wotlk/modules/mod-ah-bot
+git pull origin master

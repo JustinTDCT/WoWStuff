@@ -22,3 +22,13 @@ echo
 echo "Checking ah-bot ..."
 cd ~/azerothcore-wotlk/modules/mod-ah-bot
 git pull origin master
+echo
+while true; do
+    read -p "Update servers? " yn
+    case $yn in
+        [Yy]* ) make install; break;;
+        [Nn]* ) exit;;
+        * ) echo "Please answer yes or no.";;
+    esac
+done
+make ../ -DCMAKE_INSTALL_PREFIX=/azerothcore-fordragon/azeroth-server/ -DCMAKE_C_COMPILER=/usr/bin/clang -DCMAKE_CXX_COMPILER=/usr/bin/clang++ -DWITH_WARNINGS=1 -DTOOLS_BUILD=all -DSCRIPTS=static -DMODULES=static

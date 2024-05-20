@@ -23,6 +23,18 @@ echo "Checking ah-bot ..."
 cd ~/azerothcore-wotlk/modules/mod-ah-bot
 git pull origin master
 echo
+
+updatefunction () ;
+  echo "Updating Fordragon ..."
+  cd /home/jdube/azeroth-wotlk/build
+  sudo cmake ../ -DCMAKE_INSTALL_PREFIX=/azerothcore-fordragon/azeroth-server/ -DCMAKE_C_COMPILER=/usr/bin/clang -DCMAKE_CXX_COMPILER=/usr/bin/clang++ -DWITH_WARNINGS=1 -DTOOLS_BUILD=all -DSCRIPTS=static -DMODULES=static
+  sudo make -j 4
+  sudo make install
+  echo "Updating Arthas ..."
+  sudo cmake ../ -DCMAKE_INSTALL_PREFIX=/azerothcore/azeroth-server/ -DCMAKE_C_COMPILER=/usr/bin/clang -DCMAKE_CXX_COMPILER=/usr/bin/clang++ -DWITH_WARNINGS=1 -DTOOLS_BUILD=all -DSCRIPTS=static -DMODULES=static
+  sudo make -j 4
+  sudo make install
+
 while true; do
     read -p "Update servers? " yn
     case $yn in
@@ -31,4 +43,4 @@ while true; do
         * ) echo "Please answer yes or no.";;
     esac
 done
-make ../ -DCMAKE_INSTALL_PREFIX=/azerothcore-fordragon/azeroth-server/ -DCMAKE_C_COMPILER=/usr/bin/clang -DCMAKE_CXX_COMPILER=/usr/bin/clang++ -DWITH_WARNINGS=1 -DTOOLS_BUILD=all -DSCRIPTS=static -DMODULES=static
+cmake ../ -DCMAKE_INSTALL_PREFIX=/azerothcore-fordragon/azeroth-server/ -DCMAKE_C_COMPILER=/usr/bin/clang -DCMAKE_CXX_COMPILER=/usr/bin/clang++ -DWITH_WARNINGS=1 -DTOOLS_BUILD=all -DSCRIPTS=static -DMODULES=static
